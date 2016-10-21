@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="Elm Express">
+		<meta name="author" content="Miguel Cobá">
+
+		<title>Elm Express</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Elm Express</h1>
+					<p>
+						<small><a href="http://miguelcoba.github.io">Miguel Cobá</a> / <a href="http://twitter.com/MiguelCobaMtz">@MiguelCobaMtz</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section data-background='http://package.elm-lang.org/assets/elm_logo.svg' data-background-position='center' data-background-size='40%'>
+						<h1>Elm</h1>
+            <h3>A delightful language for reliable webapps</h3>
+					</section>
+					<section>
+						<h1>Why Elm?</h1>
+						<p>Writing JS is hard!</p>
+						<p>Requires</p>
+            <ul>
+              <li>Knowledge</li>
+              <li>Discipline</li>
+            </ul>
+					</section>
+					<section>
+						<h1>Elm is</h1>
+            <ul>
+              <li>Powerful</li>
+              <li>Simple</li>
+            </ul>
+					</section>
+					<section>
+						<h1>Elm gives you</h1>
+            <ul>
+              <li>JavaScript Interop</li>
+              <li>No runtime exceptions</li>
+              <li>Great performance</li>
+            </ul>
+					</section>
+
+					<section>
+						<h1>Elm benefits</h1>
+            <ul>
+              <li>Easy Refactorings</li>
+              <li>Improved productivity</li>
+              <li>Testable Code</li>
+              <li>Helpful type systems</li>
+            </ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Easy Refactorings</h2>
+            <p>Change code with confidence</p>
+            <p>The compiler will catch any error</p>
+					</section>
+
+					<section>
+						<h2>Improved productivity</h2>
+            <p>Immutable data</p>
+            <p>Pure functions</p>
+					</section>
+
+					<section>
+						<h2>Testable code</h2>
+            <p>Pure functions</p>
+            <p>All the data they need is passed</p>
+            <p>They no have side effects</p>
+            <p>Testing becomes passing parameters and checking return values</p>
+					</section>
+
+					<section>
+						<h2>Helpful type system</h2>
+            <p>Non intrusive</p>
+            <p>Inferred</p>
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+            <p>Programmin using pure functions</p>
+					</section>
+
+					<section>
+						<h2>Pure function</h2>
+            <p>Has no side effects</p>
+            <p>Its return value is based on input parameters</p>
+					</section>
+
+					<section>
+						<h2>A pure function must</h2>
+            <p>have input parameters</p>
+            <p>not use global state</p>
+            <p>return a value</p>
+            <p>not cause side effects</p>
+            <p></p>
+					</section>
+
+					<section>
+						<h2>Benefits of pure functions</h2>
+            <p>Reusable</p>
+            <p>Composable</p>
+            <p>Testable</p>
+            <p>Cacheable</p>
+            <p>Parallelizable</p>
+					</section>
+
+					<section>
+						<h2>Poorly implemented type systems</h2>
+            <p>Type declarations are verbose</p>
+            <p>Slow compiling</p>
+            <p>Cryptic Error Messages</p>
+            <p>Still have runtime errors</p>
+					</section>
+
+					<section>
+						<h2>Elm Type System</h2>
+            <p>Types are inferred</p>
+            <p>Feels like using a dynamic language</p>
+            <p>errors are friendly and helpful</p>
+            <p>No runtime exceptions</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>The Elm Architecture</h2>
+            <p>A simple pattern for architecting webapps</p>
+            <p>Great for modularity, code reuse, and testing</p>
+					</section>
+
+					<section data-background-image="images/elm-architecture.png">
+					</section>
+
+					<section>
+						<h2>Model</h2>
+            <p>The state of your application</p>
+						<pre><code class="elm" data-trim style="font-size: 18px;">
+type alias Model =
+    Int
+
+initialModel =
+        0
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Update</h2>
+            <p>A way to update your state</p>
+						<pre><code class="elm" data-trim style="font-size: 18px;">
+update: Msg -> Model -> Model
+update msg model =
+    case msg of
+        Increment ->
+            model + 1
+        
+        Decrement ->
+            model - 1
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>View</h2>
+            <p>A way to view your state as HTML</p>
+						<pre><code class="elm" data-trim style="font-size: 18px;">
+view : Model -> Html Msg
+view model =
+    div []
+        [ button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (toString model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Elm Application</h2>
+            <p></p>
+						<pre><code class="elm" data-trim style="font-size: 18px;">
+main =
+    Html.beginnerProgram
+        { model = initialModel
+        , view = view
+        , update = update
+        }
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Examples</h2>
+					</section>
+					<section data-background-iframe='http://unsoundscapes.com/elm-flatris.html'>
+						<h2>Tetris</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Install</h3>
+						<p><a href="http://elm-lang.org">http://elm-lang.org</a></p>
+					</section>
+					<section>
+						<h3>Learn</h3>
+						<p><a href="http://courses.knowthen.com/p/elm-for-beginners">http://courses.knowthen.com/p/elm-for-beginners</a></p>
+						<p><a href="https://guide.elm-lang.org/">Elm Guide</a></p>
+						<p><a href="https://www.elm-tutorial.org/">Elm Tutorial</a></p>
+						<p><a href="https://www.youtube.com/watch?v=zBHB9i8e3Kc">Richard Feldmand's Intro to Elm</a></p>
+					</section>
+				</section>
+
+				<section>
+						<h1>Thank you!</h1>
+						<p>Miguel Cobá</p>
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+							<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+						</a>
+						<br />
+						<small>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</small>
+				</section>
+
+			</div>
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+        autoSlide: 15000,
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
