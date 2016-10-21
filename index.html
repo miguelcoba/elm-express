@@ -38,7 +38,7 @@
 						<h1>Elm</h1>
             <h3>A delightful language for reliable webapps</h3>
 					</section>
-					<section>
+					<section data-background-image="images/question-mark-1168806-640x640.jpg">
 						<h1>Why Elm?</h1>
 						<p>Writing JS is hard!</p>
 						<p>Requires</p>
@@ -62,8 +62,10 @@
               <li>Great performance</li>
             </ul>
 					</section>
+				</section>
 
-					<section>
+				<section>
+					<section data-background-image="images/my-gift-1427426-640x480.jpg">
 						<h1>Elm benefits</h1>
             <ul>
               <li>Easy Refactorings</li>
@@ -72,22 +74,20 @@
               <li>Helpful type systems</li>
             </ul>
 					</section>
-				</section>
 
-				<section>
 					<section>
 						<h2>Easy Refactorings</h2>
             <p>Change code with confidence</p>
             <p>The compiler will catch any error</p>
 					</section>
 
-					<section>
+					<section data-background-image="images/glass-of-water-1327012-640x480.jpg">
 						<h2>Improved productivity</h2>
             <p>Immutable data</p>
             <p>Pure functions</p>
 					</section>
 
-					<section>
+          <section>
 						<h2>Testable code</h2>
             <p>Pure functions</p>
             <p>All the data they need is passed</p>
@@ -103,7 +103,7 @@
 
 					<section>
 						<h2>Functional Programming</h2>
-            <p>Programmin using pure functions</p>
+            <p>Use pure functions</p>
 					</section>
 
 					<section>
@@ -118,7 +118,6 @@
             <p>not use global state</p>
             <p>return a value</p>
             <p>not cause side effects</p>
-            <p></p>
 					</section>
 
 					<section>
@@ -130,7 +129,7 @@
             <p>Parallelizable</p>
 					</section>
 
-					<section>
+          <section data-background-image="images/compiler-error.png" data-background-size="50%" data-background-position="bottom">
 						<h2>Poorly implemented type systems</h2>
             <p>Type declarations are verbose</p>
             <p>Slow compiling</p>
@@ -154,7 +153,7 @@
             <p>Great for modularity, code reuse, and testing</p>
 					</section>
 
-					<section data-background-image="images/elm-architecture.png">
+					<section data-background-image="images/elm-architecture.png" data-background-size="contain">
 					</section>
 
 					<section>
@@ -173,6 +172,8 @@ initialModel =
 						<h2>Update</h2>
             <p>A way to update your state</p>
 						<pre><code class="elm" data-trim style="font-size: 18px;">
+type Msg = Increment | Decrement
+
 update: Msg -> Model -> Model
 update msg model =
     case msg of
@@ -216,8 +217,9 @@ main =
 					<section>
 						<h2>Examples</h2>
 					</section>
-					<section data-background-iframe='http://unsoundscapes.com/elm-flatris.html'>
-						<h2>Tetris</h2>
+
+          <section>
+            <div id="flatris"></div>
 					</section>
 				</section>
 
@@ -252,6 +254,7 @@ main =
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+    <script src="js/flatris.js"></script>
 
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
@@ -269,6 +272,9 @@ main =
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+
+      var node = document.getElementById('flatris');
+      var app = Elm.Main.embed(node);
 		</script>
 	</body>
 </html>
